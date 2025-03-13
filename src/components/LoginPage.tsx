@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import {
     Box,
     Button,
@@ -16,7 +16,7 @@ import { useAuth } from '../context/AuthContext';
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const { login } = useAuth();
+    const { login, isAuthenticated } = useAuth();
     const navigate = useNavigate();
     const toast = useToast();
 
@@ -30,16 +30,21 @@ const LoginPage = () => {
                 status: 'success',
                 duration: 2000,
             });
-            navigate('/characters');
+            navigate('/');
         } else {
             toast({
                 title: 'Login failed',
                 description: 'Invalid credentials. Try admin/password',
                 status: 'error',
                 duration: 3000,
+                position: "top-right"
             });
         }
     };
+
+    if (isAuthenticated) {
+        return <Navigate to={'/'} />
+    }
 
     return (
         <Container maxW="container.sm" py={10}>

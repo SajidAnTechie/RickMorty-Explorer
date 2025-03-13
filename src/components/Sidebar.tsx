@@ -1,4 +1,4 @@
-import { Box, VStack, Button, useColorModeValue, Icon } from '@chakra-ui/react';
+import { Box, VStack, Button, useColorModeValue } from '@chakra-ui/react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 

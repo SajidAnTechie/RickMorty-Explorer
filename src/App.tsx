@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import LoginPage from './components/LoginPage';
-import CharactersPage from './components/CharactersPage';
-import EpisodesPage from './components/EpisodesPage';
 
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
+import Dashboard from './components/Dashboard';
 
 // Register all Community features
 ModuleRegistry.registerModules([AllCommunityModule]);
@@ -31,27 +30,13 @@ function App() {
       <ChakraProvider>
         <AuthProvider>
           <Router>
-            <Box minH="100vh">
+            <Box minH="100vh" minW='100vw'>
               <Routes>
                 <Route path="/login" element={<LoginPage />} />
-                <Route
-                  path="/characters"
-                  element={
-                    <ProtectedRoute>
-                      <CharactersPage />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/episodes"
-                  element={
-                    <ProtectedRoute>
-                      <EpisodesPage />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route path="/" element={<Navigate to="/login" />} />
               </Routes>
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
             </Box>
           </Router>
         </AuthProvider>
