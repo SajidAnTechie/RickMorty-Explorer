@@ -1,14 +1,7 @@
 import { Button, HStack, Text } from '@chakra-ui/react';
+import { PaginationControlsProps } from '../../types/interfaces';
 
-interface PaginationControls {
-    handlePageChange: (page: number) => void;
-    currentPage: number;
-    totalPagesCount: number;
-    totalRecords: number;
-    pageSize: number
-}
-
-const PaginationControls = ({ handlePageChange, currentPage, totalPagesCount, totalRecords, pageSize }: PaginationControls) => {
+const PaginationControls = ({ handlePageChange, currentPage, totalPagesCount, totalRecords, pageSize }: PaginationControlsProps) => {
     const startEntry = (currentPage - 1) * pageSize + 1;
     const endEntry = Math.min(currentPage * pageSize, totalRecords);
     return (

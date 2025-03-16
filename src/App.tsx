@@ -1,27 +1,24 @@
-import { ChakraProvider, Box } from '@chakra-ui/react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { AuthProvider, useAuth } from './context/AuthContext';
-import LoginPage from './components/LoginPage';
-
-import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
+import client from './api/apollo';
+import * as routes from './constants/routes';
 import Dashboard from './components/Dashboard';
+import { ApolloProvider } from '@apollo/client';
+import { AuthContextType } from './types/interfaces';
+import LoginPage from './components/pages/LoginPage';
+import { ChakraProvider, Box } from '@chakra-ui/react';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 // Register all Community features
 ModuleRegistry.registerModules([AllCommunityModule]);
-
-const client = new ApolloClient({
-  uri: 'https://rickandmortyapi.com/graphql',
-  cache: new InMemoryCache(),
-});
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
 const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
-  const { isAuthenticated } = useAuth();
-  return isAuthenticated ? <>{children}</> : <Navigate to="/login" />;
+  const { isAuthenticated }: AuthContextType = useAuth();
+  return isAuthenticated ? <>{children}</> : <Navigate to={routes.LOGIN} />;
 };
 
 function App() {
@@ -32,7 +29,7 @@ function App() {
           <Router>
             <Box minH="100vh" minW='100vw'>
               <Routes>
-                <Route path="/login" element={<LoginPage />} />
+                <Route path={routes.LOGIN} element={<LoginPage />} />
               </Routes>
               <ProtectedRoute>
                 <Dashboard />

@@ -1,10 +1,10 @@
-
 import { Box } from '@chakra-ui/react';
-import Sidebar from './Sidebar';
+import Sidebar from './layout/Sidebar';
+import NotFound from './pages/NotFound';
+import * as routes from '../constants/routes';
+import EpisodesPage from './pages/EpisodesPage';
+import CharactersPage from './pages/CharactersPage';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import CharactersPage from './CharactersPage';
-import EpisodesPage from './EpisodesPage';
-import NotFound from './NotFound';
 
 const Dashboard = () => {
     return (
@@ -12,14 +12,14 @@ const Dashboard = () => {
             <Sidebar />
             <Routes>
                 <Route
-                    path="/characters"
+                    path={routes.CHARACTERS}
                     element={<CharactersPage />}
                 />
                 <Route
-                    path="/episodes"
+                    path={routes.EPISODES}
                     element={<EpisodesPage />}
                 />
-                <Route path="/" element={<Navigate to="/characters" />} />
+                <Route path={routes.HOME} element={<Navigate to={routes.CHARACTERS} />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </Box>

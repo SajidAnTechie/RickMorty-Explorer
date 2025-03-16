@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Box, Heading, Text, Button, Flex } from '@chakra-ui/react';
+import * as routes from '../../constants/routes';
 
 const NotFound = () => {
     const navigate = useNavigate();
@@ -30,7 +31,7 @@ const NotFound = () => {
                         colorScheme="blue"
                         mt={8}
                         size="lg"
-                        onClick={() => navigate('/characters')}
+                        onClick={() => navigate(routes.CHARACTERS)}
                     >
                         Go to Home
                     </Button>

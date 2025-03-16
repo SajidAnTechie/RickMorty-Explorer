@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import * as routes from '../../constants/routes';
+import { useAuth } from '../../context/AuthContext';
+import { AuthContextType } from '../../types/interfaces';
 import { Navigate, useNavigate } from 'react-router-dom';
 import {
     Box,
@@ -11,12 +14,11 @@ import {
     useToast,
     Container,
 } from '@chakra-ui/react';
-import { useAuth } from '../context/AuthContext';
 
 const LoginPage = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const { login, isAuthenticated } = useAuth();
+    const [username, setUsername] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const { login, isAuthenticated }: AuthContextType = useAuth();
     const navigate = useNavigate();
     const toast = useToast();
 
@@ -30,7 +32,7 @@ const LoginPage = () => {
                 status: 'success',
                 duration: 2000,
             });
-            navigate('/');
+            navigate(routes.HOME);
         } else {
             toast({
                 title: 'Login failed',
@@ -43,7 +45,7 @@ const LoginPage = () => {
     };
 
     if (isAuthenticated) {
-        return <Navigate to={'/'} />
+        return <Navigate to={routes.HOME} />
     }
 
     return (
@@ -66,7 +68,7 @@ const LoginPage = () => {
                                 <Input
                                     type="text"
                                     value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
                                     placeholder="Enter username"
                                 />
                             </FormControl>
@@ -75,7 +77,7 @@ const LoginPage = () => {
                                 <Input
                                     type="password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                                     placeholder="Enter password"
                                 />
                             </FormControl>

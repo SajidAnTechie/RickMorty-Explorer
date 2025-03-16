@@ -1,10 +1,5 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-
-interface AuthContextType {
-  isAuthenticated: boolean;
-  login: (username: string, password: string) => boolean;
-  logout: () => void;
-}
+import { AuthContextType } from '../types/interfaces';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
@@ -17,7 +12,7 @@ export const useAuth = () => {
 };
 
 interface AuthProviderProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
@@ -30,7 +25,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }, [isAuthenticated]);
 
   const login = (username: string, password: string): boolean => {
-    // Mock authentication - in a real app, this would validate against a backend
+    // use for dummy login
     if (username === 'admin' && password === 'password') {
       setIsAuthenticated(true);
       return true;

@@ -1,6 +1,7 @@
-import { Box, VStack, Button, useColorModeValue } from '@chakra-ui/react';
+import * as routes from '../../constants/routes';
+import { useAuth } from '../../context/AuthContext';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { Box, VStack, Button, useColorModeValue } from '@chakra-ui/react';
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate(routes.LOGIN);
   };
 
   return (
@@ -29,18 +30,18 @@ const Sidebar = () => {
     >
       <VStack spacing={4} align="stretch" px={4}>
         <Button
-          variant={isActive('/characters') ? 'solid' : 'ghost'}
+          variant={isActive(routes.CHARACTERS) ? 'solid' : 'ghost'}
           colorScheme="blue"
           justifyContent="start"
-          onClick={() => navigate('/characters')}
+          onClick={() => navigate(routes.CHARACTERS)}
         >
           Characters
         </Button>
         <Button
-          variant={isActive('/episodes') ? 'solid' : 'ghost'}
+          variant={isActive(routes.EPISODES) ? 'solid' : 'ghost'}
           colorScheme="blue"
           justifyContent="start"
-          onClick={() => navigate('/episodes')}
+          onClick={() => navigate(routes.EPISODES)}
         >
           Episodes
         </Button>
