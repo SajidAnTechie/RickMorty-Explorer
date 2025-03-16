@@ -43,8 +43,7 @@ const CharactersPage = () => {
 
     const searchDebounceFunction = useCallback(
         lodash.debounce(searchTerm => {
-            setFilters((prev) => ({ ...prev, 'name': searchTerm }));
-            setCurrentPage(1);
+            handleFilterChange('name', searchTerm);
         }, MIN_DEBOUNCE_TIME),
         []
     );
