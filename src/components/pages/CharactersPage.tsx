@@ -98,8 +98,9 @@ const CharactersPage = () => {
                     colorScheme="blue"
                     onClick={() => handleClearFilter()}
                     isDisabled={Object.entries(filters).length === 0}
+                    width='2xs'
                 >
-                    x
+                    Clear
                 </Button>
             </HStack>
 
