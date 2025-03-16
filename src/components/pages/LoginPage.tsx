@@ -87,7 +87,7 @@ const LoginPage = () => {
                                 width="full"
                                 mt={4}
                             >
-                                Sign In
+                                Log In
                             </Button>
                         </VStack>
                     </form>
