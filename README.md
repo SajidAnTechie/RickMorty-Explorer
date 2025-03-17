@@ -59,8 +59,8 @@ The application will start at http://localhost:5173
 ### Login Credentials
 Use these credentials to log into the application:
 
-Username: admin
-Password: password
+- Username: **admin**
+- Password: **password**
 
 ### Features in Detail
 - Characters Page: Browse, search, and filter Rick and Morty characters
