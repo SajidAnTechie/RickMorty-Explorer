@@ -1,54 +1,69 @@
-# React + TypeScript + Vite
+# Rick and Morty Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application that allows users to explore characters and episodes from the Rick and Morty series using the official Rick and Morty GraphQL API. Built with React, TypeScript, Chakra UI, Apollo Client and AG Grid.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔐 User authentication system
+- 📊 Interactive data tables with AG Grid
+- 🔍 Search and filter functionality
+- 📝 Pagination controls
+- 🎨 Responsive design with Chakra UI
+- 🚀 GraphQL integration with Apollo Client
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Chakra UI](https://chakra-ui.com/)
+- [Apollo Client](https://www.apollographql.com/docs/react/)
+- [AG Grid](https://www.ag-grid.com/)
+- [React Router](https://reactrouter.com/)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone <your-repo-url>
+
+```
+2. Navigate to project directory
+```bash
+cd rick-and-morty
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+3. Install dependencies
+```bash
+npm install
 ```
+
+4. Generate GraphQL types
+```bash
+npm run codegen
+```
+5. Start the development server
+```bash
+npm run dev
+```
+
+The application will start at http://localhost:5173
+
+### Login Credentials
+Use these credentials to log into the application:
+
+Username: admin
+Password: password
+
+### Features in Detail
+- Characters Page: Browse, search, and filter Rick and Morty characters
+- Episodes Page: Explore all episodes with detailed information
+- Authentication: Protected routes with login functionality
+- Responsive Design: Works on both desktop and mobile devices
